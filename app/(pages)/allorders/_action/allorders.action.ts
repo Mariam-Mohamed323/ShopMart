@@ -10,6 +10,5 @@ export async function GetAllOrdersAction(cartOwnerId:string) {
         }
     })
     const data:OrderResponse = await response.json()
-    console.log(data);
     return Array.isArray(data) ? data : []
 }

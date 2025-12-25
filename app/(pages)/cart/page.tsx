@@ -17,10 +17,18 @@ export default function Cart() {
   const [updatingId, setUpdatingId] = useState<string | null>(null)
   const [isClearing, setIsClearing] = useState<boolean>(false)
   
-  if (typeof cartData?.data.products[0]?.product == "string" || cartData == null)
-  {
+  // if (typeof cartData?.data.products[0]?.product == "string" || cartData == null)
+  // {
+  //   getCart();
+  // } 
+  useEffect(() => {
+  if (
+    cartData == null ||
+    typeof cartData?.data.products[0]?.product === "string"
+  ) {
     getCart();
-  } 
+  }
+}, [cartData]);
 
 
 

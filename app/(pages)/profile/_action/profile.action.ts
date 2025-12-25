@@ -10,7 +10,6 @@ export async function GetUserAddressAction() {
         }
     })
     const data:AddressResponse = await response.json()
-    console.log(data);
     
     return data
 }
@@ -28,7 +27,6 @@ export async function AddAddressAction(name: string, details: string, phone: str
             }
         })
     const data:AddressResponse = await response.json();
-    console.log("API response:", data);
     
     return data
 }
@@ -47,7 +45,6 @@ export async function RemoveAddressAction(addressId: string) {
         }
     })
     const data:AddressResponse = await response.json();
-    console.log(data);
     return data
     
 }

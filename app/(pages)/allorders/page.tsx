@@ -12,7 +12,8 @@ export default function AllOrders() {
   const [isLoading, setIsLoading] = useState(false)
   // const cartOwnerId = cartData?.data.cartOwner
 
-  const cartOwnerId = cartData?.data.cartOwner || (typeof window !== "undefined" ? localStorage.getItem("cartOwner") : null)
+ const [cartOwnerId, setCartOwnerId] = useState<string | null>(null);
+
   
   
   async function getUserOrders(ownerId: string) {
@@ -33,7 +34,14 @@ export default function AllOrders() {
       getUserOrders(cartOwnerId)
     }
   },[cartOwnerId])
-
+useEffect(() => {
+  if (cartData?.data.cartOwner) {
+    setCartOwnerId(cartData.data.cartOwner);
+  } else {
+    const stored = localStorage.getItem("cartOwner");
+    if (stored) setCartOwnerId(stored);
+  }
+}, [cartData]);
 
   return (
     <>
